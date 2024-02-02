@@ -234,6 +234,7 @@ C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetM
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.RazorAssemblyInfo.cache
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.RazorAssemblyInfo.cs
+C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.sourcelink.json
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\staticwebassets\msbuild.HomeBankingNetMvc.Microsoft.AspNetCore.StaticWebAssets.props
@@ -250,4 +251,3 @@ C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetM
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.pdb
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.genruntimeconfig.cache
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\ref\HomeBankingNetMvc.dll
-C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.sourcelink.json

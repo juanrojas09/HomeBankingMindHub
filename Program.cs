@@ -1,12 +1,27 @@
 using HomeBankingMindHub.Models;
+using HomeBankingNetMvc.Repositories.Implementation;
+using HomeBankingNetMvc.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<HomeBankingContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HomeBankingConexion")));
+
+//builder.Services.AddControllers().AddJsonOptions(x =>
+//x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
+//Agregue esto en vez de con el json options
+builder.Services.AddControllers();
+
+
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
+//y agregue esto
+app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
 {
@@ -28,6 +43,11 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(ex, "Ha ocurrido un error al enviar la información a la base de datos!");
     }
 }
+
+
+
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
