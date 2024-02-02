@@ -250,3 +250,4 @@ C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetM
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.pdb
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.genruntimeconfig.cache
 C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\ref\HomeBankingNetMvc.dll
+C:\Users\Juan Pablo\Desktop\Accenture-Proyect\HomeBankingMindHub\HomeBankingNetMvc\obj\Debug\net8.0\HomeBankingNetMvc.sourcelink.json
