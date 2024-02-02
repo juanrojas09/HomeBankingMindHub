@@ -11,7 +11,8 @@ builder.Services.AddDbContext<HomeBankingContext>(options => options.UseSqlServe
 
 //Agregue esto en vez de con el json options
 builder.Services.AddControllers();
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 
@@ -45,6 +46,13 @@ using (var scope = app.Services.CreateScope())
 }
 
 
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
+});
+app.UseSwagger();
+app.UseSwaggerUI();
 
 
 
@@ -52,6 +60,8 @@ using (var scope = app.Services.CreateScope())
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 app.UseStaticFiles();
 
