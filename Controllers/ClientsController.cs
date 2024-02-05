@@ -94,6 +94,29 @@ namespace HomeBankingNetMvc.Controllers
                 return StatusCode(500, ex.Message);
             }    
 
-        }    
-}
+        }
+
+
+        [HttpPost("CreateClient")]
+
+        public IActionResult Create([FromBody] ClientDTOReq clientDTO)
+        {
+            try
+            {
+                var client = new Client()
+                {
+                    Email = clientDTO.Email,
+                    FirstName = clientDTO.FirstName,
+                    LastName = clientDTO.LastName,
+                    
+                };
+                _clientRepository.Save(client);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+    }
 }

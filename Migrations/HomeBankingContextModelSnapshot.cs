@@ -74,6 +74,36 @@ namespace HomeBankingNetMvc.Migrations
                     b.ToTable("Account");
                 });
 
+            modelBuilder.Entity("HomeBankingNetMvc.Models.Transaction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("AccountId")
+                        .HasColumnType("bigint");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("Transactions");
+                });
+
             modelBuilder.Entity("HomeBankingNetMvc.Models.Account", b =>
                 {
                     b.HasOne("HomeBankingMindHub.Models.Client", "Client")
@@ -85,9 +115,25 @@ namespace HomeBankingNetMvc.Migrations
                     b.Navigation("Client");
                 });
 
+            modelBuilder.Entity("HomeBankingNetMvc.Models.Transaction", b =>
+                {
+                    b.HasOne("HomeBankingNetMvc.Models.Account", "Account")
+                        .WithMany("Transactions")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
             modelBuilder.Entity("HomeBankingMindHub.Models.Client", b =>
                 {
                     b.Navigation("Accounts");
+                });
+
+            modelBuilder.Entity("HomeBankingNetMvc.Models.Account", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }
