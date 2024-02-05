@@ -18,7 +18,6 @@ namespace HomeBankingNetMvc.Controllers
         }
 
         [HttpGet]
-
         public IActionResult Get()
 
         {
