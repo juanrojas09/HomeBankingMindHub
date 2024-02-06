@@ -17,6 +17,8 @@ namespace HomeBankingNetMvc.Controllers
             _clientRepository = clientRepository;
         }
 
+    
+
         [HttpGet]
         public IActionResult Get()
 
@@ -41,7 +43,18 @@ namespace HomeBankingNetMvc.Controllers
                             CreationDate = ac.CreationDate,
                             Number = ac.Number
 
-                        }).ToList()
+                        }).ToList(),
+                        Loans = client.clientLoans.Select(cl => new ClientLoanDTO
+                        { Id = cl.Id,
+                            LoanId = cl.LoanId,
+                            Name = cl.Loan.Name,
+                            Amount = cl.Amount,
+                            Payments = int.Parse(cl.Payments)
+
+
+
+                        }
+                        ).ToList()
 
                     };                    
                     clientsDTO.Add(newClientDTO);
@@ -83,7 +96,19 @@ namespace HomeBankingNetMvc.Controllers
                         CreationDate = ac.CreationDate,
                         Number = ac.Number
 
-                    }).ToList()
+                    }).ToList(),
+                       Loans = client.clientLoans.Select(cl => new ClientLoanDTO
+                       {
+                           Id = cl.Id,
+                           LoanId = cl.LoanId,
+                           Name = cl.Loan.Name,
+                           Amount = cl.Amount,
+                           Payments = int.Parse(cl.Payments)
+
+
+
+                       }
+                        ).ToList()
 
                 };
                 return Ok(clientDTO);
