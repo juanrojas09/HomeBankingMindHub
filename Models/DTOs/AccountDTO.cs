@@ -1,9 +1,11 @@
 ﻿using HomeBankingMindHub.Models;
+using System.Text.Json.Serialization;
 
 namespace HomeBankingNetMvc.Models.DTOs
 {
     public class AccountDTO
     {
+        
         public long Id { get; set; }
 
         public string Number { get; set; }
