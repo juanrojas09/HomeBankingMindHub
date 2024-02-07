@@ -1,4 +1,5 @@
-﻿using HomeBankingMindHub.Models;
+﻿using AutoMapper;
+using HomeBankingMindHub.Models;
 using HomeBankingNetMvc.Models.DTOs;
 using HomeBankingNetMvc.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -11,13 +12,15 @@ namespace HomeBankingNetMvc.Controllers
     public class ClientsController : ControllerBase
     {
         private IClientRepository _clientRepository;
+        private IMapper _mapper;
 
-        public ClientsController(IClientRepository clientRepository)
+        public ClientsController(IClientRepository clientRepository, IMapper mapper)
         {
             _clientRepository = clientRepository;
+            _mapper = mapper;
         }
 
-    
+
 
         [HttpGet]
         public IActionResult Get()
@@ -26,54 +29,11 @@ namespace HomeBankingNetMvc.Controllers
             try
             {
                 var clients = _clientRepository.GetAllClients();
-                var clientsDTO = new List<ClientDTO>();
+                var mappedClients = _mapper.Map<IEnumerable<ClientDTO>>(clients);
                 
-                foreach (Client client in clients)
-                {
-                    var newClientDTO = new ClientDTO
-                    {
-                        Id = client.Id,
-                        Email = client.Email,
-                        FirstName = client.FirstName,
-                        LastName = client.LastName,
-                        Accounts = client.Accounts.Select(ac => new AccountDTO
-                        {
-                            Id = ac.Id,
-                            Balance = ac.Balance,
-                            CreationDate = ac.CreationDate,
-                            Number = ac.Number
+                var clientsDTO = new List<ClientDTO>();
 
-                        }).ToList(),
-                        Credits = client.ClientLoans.Select(cl => new ClientLoanDTO
-                        { Id = cl.Id,
-                            LoanId = cl.LoanId,
-                            Name = cl.Loan.Name,
-                            Amount = cl.Amount,
-                            Payments = int.Parse(cl.Payments)
-
-
-
-                        }
-                        ).ToList()
-                        ,
-                        Cards = client.Cards.Select(c => new CardDTO
-                        {
-                            Id = c.id,
-                            CardHolder = c.CardHolder,
-                            Color = c.Color,
-                            Cvv = c.Cvv,
-                            FromDate = c.FromDate,
-                            Number = c.Number,
-                            ThruDate = c.ThruDate,
-                            Type = c.Type
-                        }).ToList()
-
-
-
-                    };                    
-                    clientsDTO.Add(newClientDTO);
-                }
-                return Ok(clientsDTO);
+                return Ok(mappedClients);              
 
             }
 
@@ -92,55 +52,14 @@ namespace HomeBankingNetMvc.Controllers
             try
             {
                 var client = _clientRepository.FindById(id);
+                var mappedCLients = _mapper.Map<ClientDTO>(client);
                 if (client == null)
                 {
                     return Forbid();
                 }
+                return Ok(mappedCLients);
 
-                var clientDTO = new ClientDTO
-                {
-                    Id = client.Id,
-                    Email = client.Email,
-                    FirstName = client.FirstName,
-                    LastName = client.LastName,
-                    Accounts = client.Accounts.Select(ac => new AccountDTO
-                    {
-                        Id = ac.Id,
-                        Balance = ac.Balance,
-                        CreationDate = ac.CreationDate,
-                        Number = ac.Number
-
-                    }).ToList(),
-                    Credits = client.ClientLoans.Select(cl => new ClientLoanDTO
-                    {
-                        Id = cl.Id,
-                        LoanId = cl.LoanId,
-                        Name = cl.Loan.Name,
-                        Amount = cl.Amount,
-                        Payments = int.Parse(cl.Payments)
-
-
-
-                    }
-                        ).ToList()
-                        ,
-                    Cards = client.Cards.Select(c => new CardDTO
-                    {
-                        Id = c.id,
-                        CardHolder = c.CardHolder,
-                        Color = c.Color,
-                        Cvv = c.Cvv,
-                        FromDate = c.FromDate,
-                        Number = c.Number,
-                        ThruDate = c.ThruDate,
-                        Type = c.Type
-                    }).ToList()
-
-
-
-
-                };
-                return Ok(clientDTO);
+               
             }
 
             catch (Exception ex)
@@ -157,13 +76,14 @@ namespace HomeBankingNetMvc.Controllers
         {
             try
             {
-                var client = new Client()
-                {
-                    Email = clientDTO.Email,
-                    FirstName = clientDTO.FirstName,
-                    LastName = clientDTO.LastName,
-                    
-                };
+                //var client = new Client()
+                //{
+                //    Email = clientDTO.Email,
+                //    FirstName = clientDTO.FirstName,
+                //    LastName = clientDTO.LastName,
+
+                //};
+                var client = _mapper.Map<Client>(clientDTO);
                 _clientRepository.Save(client);
                 return Ok();
             }

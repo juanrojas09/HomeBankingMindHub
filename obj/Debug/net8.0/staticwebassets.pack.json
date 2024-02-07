@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\accounts.html"
     },
     {
+      "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\cards.html",
+      "PackagePath": "staticwebassets\\cards.html"
+    },
+    {
+      "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\css\\cards.css",
+      "PackagePath": "staticwebassets\\css\\cards.css"
+    },
+    {
       "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -25,12 +33,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\img\\logo vinotinto.png",
+      "PackagePath": "staticwebassets\\img\\logo vinotinto.png"
+    },
+    {
       "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\account.js",
       "PackagePath": "staticwebassets\\js\\account.js"
     },
     {
       "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\accounts.js",
       "PackagePath": "staticwebassets\\js\\accounts.js"
+    },
+    {
+      "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\cards.js",
+      "PackagePath": "staticwebassets\\js\\cards.js"
     },
     {
       "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\site.js",

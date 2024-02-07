@@ -5,7 +5,6 @@ namespace HomeBankingNetMvc.Models.DTOs
     public class ClientDTO
     {
         [JsonIgnore]
-
         public long Id { get; set; }
 
         public string FirstName { get; set; }
