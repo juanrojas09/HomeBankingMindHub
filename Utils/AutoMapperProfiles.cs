@@ -9,7 +9,10 @@ namespace HomeBankingNetMvc.Utils
     {
         public AutoMapperProfiles()
         {
-            CreateMap<Client, ClientDTO>().ReverseMap();
+          
+            CreateMap<Client, ClientDTO>()
+     .ForMember(dest => dest.Credits, opt => opt.MapFrom(src => src.ClientLoans))
+     .ReverseMap();
             CreateMap<ClientDTO, Client>();
             CreateMap<Account, AccountDTO>().ReverseMap(); ;
             CreateMap<AccountDTO, Account>();
