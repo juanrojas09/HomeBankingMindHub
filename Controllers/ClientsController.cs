@@ -44,7 +44,7 @@ namespace HomeBankingNetMvc.Controllers
                             Number = ac.Number
 
                         }).ToList(),
-                        Loans = client.clientLoans.Select(cl => new ClientLoanDTO
+                        Credits = client.ClientLoans.Select(cl => new ClientLoanDTO
                         { Id = cl.Id,
                             LoanId = cl.LoanId,
                             Name = cl.Loan.Name,
@@ -55,6 +55,20 @@ namespace HomeBankingNetMvc.Controllers
 
                         }
                         ).ToList()
+                        ,
+                        Cards = client.Cards.Select(c => new CardDTO
+                        {
+                            Id = c.id,
+                            CardHolder = c.CardHolder,
+                            Color = c.Color,
+                            Cvv = c.Cvv,
+                            FromDate = c.FromDate,
+                            Number = c.Number,
+                            ThruDate = c.ThruDate,
+                            Type = c.Type
+                        }).ToList()
+
+
 
                     };                    
                     clientsDTO.Add(newClientDTO);
@@ -97,18 +111,33 @@ namespace HomeBankingNetMvc.Controllers
                         Number = ac.Number
 
                     }).ToList(),
-                       Loans = client.clientLoans.Select(cl => new ClientLoanDTO
-                       {
-                           Id = cl.Id,
-                           LoanId = cl.LoanId,
-                           Name = cl.Loan.Name,
-                           Amount = cl.Amount,
-                           Payments = int.Parse(cl.Payments)
+                    Credits = client.ClientLoans.Select(cl => new ClientLoanDTO
+                    {
+                        Id = cl.Id,
+                        LoanId = cl.LoanId,
+                        Name = cl.Loan.Name,
+                        Amount = cl.Amount,
+                        Payments = int.Parse(cl.Payments)
 
 
 
-                       }
+                    }
                         ).ToList()
+                        ,
+                    Cards = client.Cards.Select(c => new CardDTO
+                    {
+                        Id = c.id,
+                        CardHolder = c.CardHolder,
+                        Color = c.Color,
+                        Cvv = c.Cvv,
+                        FromDate = c.FromDate,
+                        Number = c.Number,
+                        ThruDate = c.ThruDate,
+                        Type = c.Type
+                    }).ToList()
+
+
+
 
                 };
                 return Ok(clientDTO);

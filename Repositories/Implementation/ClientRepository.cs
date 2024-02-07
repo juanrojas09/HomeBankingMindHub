@@ -15,7 +15,8 @@ namespace HomeBankingNetMvc.Repositories.Implementation
             try
             {
                 return FindByCondition(x => x.Id == id).Include(client => client.Accounts)
-                    .Include(client=>client.clientLoans).ThenInclude(cl=>cl.Loan)
+                    .Include(client=>client.ClientLoans).ThenInclude(cl=>cl.Loan)
+                    .Include(cl=>cl.Cards)
                     .FirstOrDefault();
                 
             }catch(Exception ex)
@@ -29,8 +30,9 @@ namespace HomeBankingNetMvc.Repositories.Implementation
             try
             {
                 return  FindAll()
-                    .Include(client=>client.Accounts).Include(client=>client.clientLoans)
+                    .Include(client=>client.Accounts).Include(client=>client.ClientLoans)
                     .ThenInclude(cl=>cl.Loan)
+                    .Include(cl=>cl.Cards)
                    .ToList();
             }
             catch (Exception ex)
