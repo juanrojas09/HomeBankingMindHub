@@ -2,6 +2,7 @@
 using HomeBankingMindHub.Models;
 using HomeBankingNetMvc.Models.DTOs;
 using HomeBankingNetMvc.Repositories.Interfaces;
+using HomeBankingNetMvc.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -92,5 +93,81 @@ namespace HomeBankingNetMvc.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+
+        [HttpGet("current")]
+        public IActionResult GetCurrent()
+        {
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+                if (email == string.Empty)
+                {
+                    return Forbid();
+                }
+
+                Client client = _clientRepository.FindByEmail(email);
+
+                if (client == null)
+                {
+                    return Forbid();
+                }
+
+                var MappedClient = _mapper.Map<ClientDTO>(client);
+                return Ok(MappedClient);
+
+               
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Client client)
+        {
+            try
+            {
+                //validamos datos antes
+                //se puede validar en el modelado.. desp refactorizar
+                if (String.IsNullOrEmpty(client.Email) || String.IsNullOrEmpty(client.Password) || String.IsNullOrEmpty(client.FirstName) || String.IsNullOrEmpty(client.LastName))
+                    return StatusCode(403, "datos inválidos");
+
+                //buscamos si ya existe el usuario
+                Client user = _clientRepository.FindByEmail(client.Email);
+
+                if (user != null)
+                {
+                    return StatusCode(403, "Email está en uso");
+                }
+
+               
+               var hashedPass= Encrypt.HashPassword(client.Password);             
+                                        
+                
+
+             
+                Client newClient = new Client
+                {
+                    Email = client.Email,
+                    Password = hashedPass,
+                    FirstName = client.FirstName,
+                    LastName = client.LastName,
+                };
+
+                _clientRepository.Save(newClient);
+                return Created("", newClient);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+
+
+
     }
 }

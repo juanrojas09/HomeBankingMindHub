@@ -1,6 +1,7 @@
 using HomeBankingMindHub.Models;
 using HomeBankingNetMvc.Repositories.Implementation;
 using HomeBankingNetMvc.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -35,6 +36,20 @@ builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddRazorPages();
 
 
+//Autenticacion
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+      .AddCookie(options =>
+      {
+          options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+          options.LoginPath = new PathString("/index.html");
+      });
+
+//Autorizaciom
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ClientOnly", policy => policy.RequireClaim("Client"));
+});
+
 
 var app = builder.Build();
 
@@ -66,7 +81,7 @@ using (var scope = app.Services.CreateScope())
 app.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-    options.RoutePrefix = string.Empty;
+    
 });
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -84,7 +99,7 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

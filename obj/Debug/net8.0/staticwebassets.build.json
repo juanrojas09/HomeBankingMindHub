@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DKYqcpKiv7ky5mdABGMfnKS9g4xzPbdRTPixvUrK0f4=",
+  "Hash": "42qsAiTvNIPUgj6MiG0w9y1pYDkYYLFD3Nw9xo7e1eg=",
   "Source": "HomeBankingNetMvc",
   "BasePath": "_content/HomeBankingNetMvc",
   "Mode": "Default",
@@ -188,6 +188,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\img\\avila.jpg",
+      "SourceId": "HomeBankingNetMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\",
+      "BasePath": "_content/HomeBankingNetMvc",
+      "RelativePath": "img/avila.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\avila.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\img\\logo vinotinto.png",
       "SourceId": "HomeBankingNetMvc",
       "SourceType": "Discovered",
@@ -205,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\logo vinotinto.png"
+    },
+    {
+      "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\index.html",
+      "SourceId": "HomeBankingNetMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\",
+      "BasePath": "_content/HomeBankingNetMvc",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
       "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\account.js",
@@ -262,6 +300,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\cards.js"
+    },
+    {
+      "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\index.js",
+      "SourceId": "HomeBankingNetMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\",
+      "BasePath": "_content/HomeBankingNetMvc",
+      "RelativePath": "js/index.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\index.js"
     },
     {
       "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\site.js",

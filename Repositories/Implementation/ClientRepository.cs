@@ -10,6 +10,24 @@ namespace HomeBankingNetMvc.Repositories.Implementation
         {
         }
 
+        public Client FindByEmail(string email)
+        {
+            try
+            {
+                var client = FindByCondition(cl => cl.Email.ToUpper() == email.ToUpper())
+                    .Include(client => client.Accounts)
+                    .Include(client => client.ClientLoans)
+                    .ThenInclude(client => client.Loan)
+                    .Include(client => client.Cards).FirstOrDefault();
+                return client;
+
+
+            }catch(Exception ex)
+            {
+                throw new Exception("Error al traer un usuario por su email" + ex.Message);
+            }
+        }
+
         public Client FindById(long id)
         {
             try
