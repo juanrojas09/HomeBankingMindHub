@@ -25,6 +25,7 @@ namespace HomeBankingNetMvc.Repositories.Implementation
             }
         }
 
+
         public IEnumerable<Account> GetAllAccounts()
         {
             try
@@ -34,6 +35,37 @@ namespace HomeBankingNetMvc.Repositories.Implementation
             catch (Exception ex)
             {
                 throw new Exception("Error al listar todos las cuentas" + ex.Message);
+            }
+        }
+
+        public void Save(Account account)
+        {
+            try
+            {
+                Create(account);
+                SaveChanges();
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al guardar un account" + ex.Message);
+            }
+        }
+
+        public IEnumerable<Account> GetAccountsByClient(long clientId)
+        {
+            try
+            {
+
+                var Accounts = FindByCondition(x => x.ClientId == clientId)
+                 .Include(account => account.Transactions)
+                 .ToList();                
+
+                return Accounts;
+
+            }catch(Exception ex)
+            {
+                throw new Exception("Error al traer cuentas por cliente" + ex.Message);
             }
         }
     }

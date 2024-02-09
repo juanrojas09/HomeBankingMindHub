@@ -5,6 +5,7 @@ using HomeBankingNetMvc.Repositories.Interfaces;
 using HomeBankingNetMvc.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 
 namespace HomeBankingNetMvc.Controllers
 {
@@ -131,6 +132,13 @@ namespace HomeBankingNetMvc.Controllers
             {
                 //validamos datos antes
                 //se puede validar en el modelado.. desp refactorizar
+
+                //valido que el email cuente con lo necesario para su validez
+                if (!Regex.IsMatch(client.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    return StatusCode(403, "Email inválido");
+                }
+
                 if (String.IsNullOrEmpty(client.Email) || String.IsNullOrEmpty(client.Password) || String.IsNullOrEmpty(client.FirstName) || String.IsNullOrEmpty(client.LastName))
                     return StatusCode(403, "datos inválidos");
 

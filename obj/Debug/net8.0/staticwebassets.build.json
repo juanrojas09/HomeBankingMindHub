@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "42qsAiTvNIPUgj6MiG0w9y1pYDkYYLFD3Nw9xo7e1eg=",
+  "Hash": "JqaOH95UKhphlSIT8cW98XCdiarlRNCMSGN1Nt1CGA8=",
   "Source": "HomeBankingNetMvc",
   "BasePath": "_content/HomeBankingNetMvc",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\cards.html"
+    },
+    {
+      "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\create-cards.html",
+      "SourceId": "HomeBankingNetMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\",
+      "BasePath": "_content/HomeBankingNetMvc",
+      "RelativePath": "create-cards.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\create-cards.html"
     },
     {
       "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\css\\cards.css",
@@ -300,6 +319,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\cards.js"
+    },
+    {
+      "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\create-cards.js",
+      "SourceId": "HomeBankingNetMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\",
+      "BasePath": "_content/HomeBankingNetMvc",
+      "RelativePath": "js/create-cards.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\create-cards.js"
     },
     {
       "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\index.js",
