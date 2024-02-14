@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JqaOH95UKhphlSIT8cW98XCdiarlRNCMSGN1Nt1CGA8=",
+  "Hash": "ivcwV9AfN1o9HIb3cPo4FpJ6cWONcXF7ImKON+YWN98=",
   "Source": "HomeBankingNetMvc",
   "BasePath": "_content/HomeBankingNetMvc",
   "Mode": "Default",
@@ -376,6 +376,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\transfers.js",
+      "SourceId": "HomeBankingNetMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\",
+      "BasePath": "_content/HomeBankingNetMvc",
+      "RelativePath": "js/transfers.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\transfers.js"
     },
     {
       "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
@@ -1497,6 +1516,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manager.js"
+    },
+    {
+      "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\transfers.html",
+      "SourceId": "HomeBankingNetMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\",
+      "BasePath": "_content/HomeBankingNetMvc",
+      "RelativePath": "transfers.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\transfers.html"
     },
     {
       "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\wwwroot.zip",

@@ -15,7 +15,7 @@ namespace HomeBankingNetMvc.Models
         public Client Client { get; set; }
         public long ClientId { get; set; }
 
-        public ICollection<Transaction> Transactions { get; set; }
+        public ICollection<Transactions> Transactions { get; set; }
     }
 }
     

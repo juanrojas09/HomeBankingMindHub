@@ -1,6 +1,6 @@
 ﻿namespace HomeBankingNetMvc.Models
 {
-    public class Transaction
+    public class Transactions
     {
         public long Id { get; set; }
         public TransactionType Type { get; set; }

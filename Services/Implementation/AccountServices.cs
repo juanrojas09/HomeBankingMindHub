@@ -1,4 +1,6 @@
-﻿using HomeBankingNetMvc.Models;
+﻿using AutoMapper;
+using HomeBankingNetMvc.Models;
+using HomeBankingNetMvc.Models.DTOs;
 using HomeBankingNetMvc.Repositories.Interfaces;
 using HomeBankingNetMvc.Services.Interfaces;
 using HomeBankingNetMvc.Utils;
@@ -10,11 +12,13 @@ namespace HomeBankingNetMvc.Services.Implementation
     {
         private readonly IClientRepository _clientRepository;
         private readonly IAccountRepository _accountRepository;
+        private readonly IMapper _mapper;
 
-        public AccountServices(IClientRepository clientRepository, IAccountRepository accountRepository)
+        public AccountServices(IClientRepository clientRepository, IAccountRepository accountRepository, IMapper mapper)
         {
             _clientRepository = clientRepository;
             _accountRepository = accountRepository;
+            _mapper = mapper;
         }
 
         public void Create(string email)
@@ -50,13 +54,47 @@ namespace HomeBankingNetMvc.Services.Implementation
             }
         }
 
+        public IEnumerable<AccountDTO> Get()
+        {
+            var accounts = _accountRepository.GetAllAccounts();
+            var mappedAccounts = _mapper.Map<IEnumerable<AccountDTO>>(accounts);
+            return mappedAccounts;
+        }
+
+        public AccountDTO Get(long id)
+        {
+            var account = _accountRepository.FindById(id);
+            if (account == null)
+            {
+                throw new Exception("Error, no hay cuentas con ese id");
+            }
+
+            var mappedAccount = _mapper.Map<AccountDTO>(account);
+            return mappedAccount;
+        }
+
+        public AccountDTO GetAccountByNumber(string number)
+        {
+            try
+            {
+                var account = _accountRepository.GetAccountByNumber(number);
+                var mappedAccount = _mapper.Map<AccountDTO>(account);
+
+                return mappedAccount;
+
+            }catch(Exception ex)
+            {
+                throw new Exception("Error al traer cuenta" + ex.Message);
+            }
+        }
+        
         public IEnumerable<Account> GetAccountsById(string email)
         {
             try
             {
                 var _client = _clientRepository.FindByEmail(email);
                 var accounts= _accountRepository.GetAccountsByClient(_client.Id);
-
+             
                 return accounts;
 
             }
@@ -65,5 +103,7 @@ namespace HomeBankingNetMvc.Services.Implementation
                 throw new Exception("Error al traer cuentas por id");
             }
         }
+
+   
     }
 }

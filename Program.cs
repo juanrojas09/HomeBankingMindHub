@@ -38,6 +38,9 @@ builder.Services.AddScoped<IAccountServices, AccountServices>();
 builder.Services.AddScoped<ICardServices, CardServices>();
 builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IClientServices, ClientServices>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<ITransactionServices, TransactionServices>();
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();

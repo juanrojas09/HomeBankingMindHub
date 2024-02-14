@@ -19,7 +19,7 @@ namespace HomeBankingNetMvc.Utils
             CreateMap<ClientLoan, ClientLoanDTO>().ReverseMap(); 
             CreateMap<Card, CardDTO>().ReverseMap();
             CreateMap<ClientDTOReq, Client>();
-            CreateMap<Transaction, TransactionDTO>().ReverseMap();
+            CreateMap<Transactions, TransactionDTO>().ReverseMap();
             CreateMap<CreateAccountDTO, Account>().ReverseMap();
             CreateMap<CreateCardDTO, Card>().ReverseMap();
 

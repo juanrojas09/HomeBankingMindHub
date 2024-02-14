@@ -42,7 +42,15 @@ namespace HomeBankingNetMvc.Repositories.Implementation
         {
             try
             {
-                Create(account);
+                if (account.Id == 0)
+                {
+                    Create(account);
+                }
+                else
+                {
+                    Update(account);
+                }
+
                 SaveChanges();
 
             }
@@ -66,6 +74,20 @@ namespace HomeBankingNetMvc.Repositories.Implementation
             }catch(Exception ex)
             {
                 throw new Exception("Error al traer cuentas por cliente" + ex.Message);
+            }
+        }
+
+        public Account GetAccountByNumber(string number)
+        {
+            try
+            {
+                var account = FindByCondition(x => x.Number.ToUpper() == number.ToUpper()).Include(account => account.Transactions).FirstOrDefault();
+                return account;
+                
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al traer cuenta por numero" + ex.Message);
             }
         }
     }

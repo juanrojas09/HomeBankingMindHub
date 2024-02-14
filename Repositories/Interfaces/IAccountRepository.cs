@@ -11,6 +11,7 @@ namespace HomeBankingNetMvc.Repositories.Interfaces
 
         void Save(Account account);
         IEnumerable<Account> GetAccountsByClient(long clientId);
+        public Account GetAccountByNumber(string number);
         
         
 
