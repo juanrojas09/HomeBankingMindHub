@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HomeBankingNetMvc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d800f692abfa51be5cfa7a971269907a33aff5d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88e1b91045c071371dd0318125a54ed8c5ad5db4")]
 [assembly: System.Reflection.AssemblyProductAttribute("HomeBankingNetMvc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HomeBankingNetMvc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

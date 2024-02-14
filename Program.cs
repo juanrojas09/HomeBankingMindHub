@@ -1,6 +1,8 @@
 using HomeBankingMindHub.Models;
 using HomeBankingNetMvc.Repositories.Implementation;
 using HomeBankingNetMvc.Repositories.Interfaces;
+using HomeBankingNetMvc.Services.Implementation;
+using HomeBankingNetMvc.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
@@ -32,6 +34,10 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<ICardRepository, CardRepository>();
+builder.Services.AddScoped<IAccountServices, AccountServices>();
+builder.Services.AddScoped<ICardServices, CardServices>();
+builder.Services.AddScoped<IAuthServices, AuthServices>();
+builder.Services.AddScoped<IClientServices, ClientServices>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();

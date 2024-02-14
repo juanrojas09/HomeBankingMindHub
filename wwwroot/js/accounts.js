@@ -32,7 +32,7 @@ var app = new Vue({
                 })
         },
         create: function () {
-            axios.post('/api/Account/current')
+            axios.post('/api/Clients/current')
                 .then(response => window.location.reload())
                 .catch((error) => {
                     this.errorMsg = error.response.data;

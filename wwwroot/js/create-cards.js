@@ -35,7 +35,7 @@ var app = new Vue({
                     this.errorMsg = error.response.data;  
                     this.errorToats.show();
                 }) */
-                axios.post('/api/Card/current/cards',{
+                axios.post('/api/Clients/current/cards',{
                     type: this.cardType,
                     color: this.cardColor,
                 })

@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using HomeBankingMindHub.Models;
+using HomeBankingNetMvc.Models;
 using HomeBankingNetMvc.Models.DTOs;
+using HomeBankingNetMvc.Repositories.Implementation;
 using HomeBankingNetMvc.Repositories.Interfaces;
+using HomeBankingNetMvc.Services.Interfaces;
 using HomeBankingNetMvc.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,16 +16,20 @@ namespace HomeBankingNetMvc.Controllers
     [ApiController]
     public class ClientsController : ControllerBase
     {
-        private IClientRepository _clientRepository;
+
+
+        private readonly IClientServices _clientServices;
+        private readonly ICardServices _cardServices;
+        private readonly IAccountServices _accountServices;
         private IMapper _mapper;
 
-        public ClientsController(IClientRepository clientRepository, IMapper mapper)
+        public ClientsController(IClientServices clientServices, IMapper mapper, ICardServices cardServices, IAccountServices accountServices)
         {
-            _clientRepository = clientRepository;
+            _clientServices = clientServices;
             _mapper = mapper;
+            _cardServices = cardServices;
+            _accountServices = accountServices;
         }
-
-
 
         [HttpGet]
         public IActionResult Get()
@@ -30,12 +37,8 @@ namespace HomeBankingNetMvc.Controllers
         {
             try
             {
-                var clients = _clientRepository.GetAllClients();
-                var mappedClients = _mapper.Map<IEnumerable<ClientDTO>>(clients);
-                
-                var clientsDTO = new List<ClientDTO>();
-
-                return Ok(mappedClients);              
+                var clients = _clientServices.Get();
+                return Ok(clients);
 
             }
 
@@ -53,13 +56,9 @@ namespace HomeBankingNetMvc.Controllers
         {
             try
             {
-                var client = _clientRepository.FindById(id);
-                var mappedCLients = _mapper.Map<ClientDTO>(client);
-                if (client == null)
-                {
-                    return Forbid();
-                }
-                return Ok(mappedCLients);
+                var client = _clientServices.Get(id);
+            
+                return Ok(client);
 
                
             }
@@ -78,15 +77,19 @@ namespace HomeBankingNetMvc.Controllers
         {
             try
             {
-                //var client = new Client()
-                //{
-                //    Email = clientDTO.Email,
-                //    FirstName = clientDTO.FirstName,
-                //    LastName = clientDTO.LastName,
-
-                //};
                 var client = _mapper.Map<Client>(clientDTO);
-                _clientRepository.Save(client);
+
+                if (!ClientsValidation.IsValidEmail(clientDTO.Email))
+                {
+                    return StatusCode(403, "Email inválido");
+                }
+
+
+                if (!ClientsValidation.AreClientDataValid(client))
+                {
+                    return StatusCode(403, "Datos inválidos");
+                }
+                _clientServices.Create(clientDTO);
                 return Ok();
             }
             catch (Exception ex)
@@ -106,16 +109,11 @@ namespace HomeBankingNetMvc.Controllers
                 {
                     return Forbid();
                 }
+                
+                var client = _clientServices.GetCurrent(email);
 
-                Client client = _clientRepository.FindByEmail(email);
-
-                if (client == null)
-                {
-                    return Forbid();
-                }
-
-                var MappedClient = _mapper.Map<ClientDTO>(client);
-                return Ok(MappedClient);
+          
+                return Ok(client);
 
                
             }
@@ -131,41 +129,19 @@ namespace HomeBankingNetMvc.Controllers
             try
             {
                 //validamos datos antes
-                //se puede validar en el modelado.. desp refactorizar
-
-                //valido que el email cuente con lo necesario para su validez
-                if (!Regex.IsMatch(client.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                if (!ClientsValidation.IsValidEmail(client.Email))
                 {
                     return StatusCode(403, "Email inválido");
                 }
-
-                if (String.IsNullOrEmpty(client.Email) || String.IsNullOrEmpty(client.Password) || String.IsNullOrEmpty(client.FirstName) || String.IsNullOrEmpty(client.LastName))
-                    return StatusCode(403, "datos inválidos");
-
-                //buscamos si ya existe el usuario
-                Client user = _clientRepository.FindByEmail(client.Email);
-
-                if (user != null)
+                
+                if (!ClientsValidation.AreClientDataValid(client))
                 {
-                    return StatusCode(403, "Email está en uso");
+                    return StatusCode(403, "Datos inválidos");
                 }
 
-               
-               var hashedPass= Encrypt.HashPassword(client.Password);             
-                                        
-                
-
-             
-                Client newClient = new Client
-                {
-                    Email = client.Email,
-                    Password = hashedPass,
-                    FirstName = client.FirstName,
-                    LastName = client.LastName,
-                };
-
-                _clientRepository.Save(newClient);
-                return Created("", newClient);
+              
+                 _clientServices.Post(client);
+                return Created("", client);
 
             }
             catch (Exception ex)
@@ -173,6 +149,90 @@ namespace HomeBankingNetMvc.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        //tarjetas
+
+        [HttpPost("current/cards")]
+        public IActionResult Create(CreateCardDTO cardData)
+        {
+            try
+            {
+
+
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+                 _cardServices.Create(cardData, email);
+
+                return StatusCode(201, "Created");
+
+
+            }
+            catch
+            {
+                throw new Exception("Error al crear tarjeta");
+            }
+
+        }
+
+
+        [HttpGet("current/cards")]
+        public IActionResult getCardsByClientId()
+        {
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+                var cards = _cardServices.getCardsByClientId(email);
+                return Ok(cards);
+
+            }
+            catch
+            {
+                throw new Exception("Error al traer las tarjetas asociadas al cliente");
+            }
+        }
+
+
+        //cuentas
+
+        [HttpPost("current")]
+
+        public IActionResult Create()
+        {
+            try
+            {
+
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+                _accountServices.Create(email);
+
+
+                return StatusCode(201, "Creada");
+
+            }
+            catch
+            {
+                throw new Exception("Error al crear cuenta");
+            }
+        }
+
+        [HttpGet("currents/Account")]
+        public IActionResult GetAccountsById()
+        {
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+                var acc = _accountServices.GetAccountsById(email);
+
+
+
+                return Ok(acc);
+            }
+            catch
+            {
+                throw new Exception("Error al traer cuentas por id");
+            }
+        }
+
+
+
 
 
 

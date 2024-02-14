@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using HomeBankingNetMvc.Utils;
+using HomeBankingNetMvc.Services.Interfaces;
 
 namespace HomeBankingNetMvc.Controllers
 {
@@ -13,37 +14,34 @@ namespace HomeBankingNetMvc.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private IClientRepository _clientRepository;
-        public AuthController(IClientRepository clientRepository)
+        private IAuthServices _authServices;
+        
+        public AuthController(IAuthServices authServices)
         {
-            _clientRepository = clientRepository;
+            
+            _authServices = authServices;
         }
 
-        
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Client client)
         {
             try
             {
-                Client user = _clientRepository.FindByEmail(client.Email);
-                var hashedPass = Encrypt.HashPassword(client.Password);
-
-                if (user == null || !String.Equals(user.Password, hashedPass))
-                    return Unauthorized();
-
-                var claims = new List<Claim>
+                if (client == null || string.IsNullOrWhiteSpace(client.Email) || string.IsNullOrWhiteSpace(client.Password))
                 {
-                    new Claim("Client", user.Email),
-                };
+                    return BadRequest("El cliente debe tener un correo electrónico y una contraseña válidos.");
+                }
 
-                var claimsIdentity = new ClaimsIdentity(
-                    claims,
-                    CookieAuthenticationDefaults.AuthenticationScheme
-                    );
+                var loginTask = _authServices.Login(client);
+                var loginResult = await loginTask;
 
+                if (loginResult == null)
+                    return Unauthorized();
+                
                 await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity));
+                    new ClaimsPrincipal(loginResult));
 
                 return Ok();
 

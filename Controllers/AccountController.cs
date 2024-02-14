@@ -77,59 +77,59 @@ namespace HomeBankingNetMvc.Controllers
 
         }
 
-        [HttpPost("current")]
+        //[HttpPost("current")]
 
-        public IActionResult Create()
-        {
-            try
-            {
+        //public IActionResult Create()
+        //{
+        //    try
+        //    {
 
-                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
-                var _client = _clientRepository.FindByEmail(email);
-                var accountsQty = _accountRepository.GetAccountsByClient(_client.Id).Count();
-                if (accountsQty >= 3)
-                {
-                    return StatusCode(403,"No se pueden crear mas de 3 cuentas");
-                }
-                //var mappedAccount = _mapper.Map<Account>(account);
+        //        string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+        //        var _client = _clientRepository.FindByEmail(email);
+        //        var accountsQty = _accountRepository.GetAccountsByClient(_client.Id).Count();
+        //        if (accountsQty >= 3)
+        //        {
+        //            return StatusCode(403,"No se pueden crear mas de 3 cuentas");
+        //        }
+        //        //var mappedAccount = _mapper.Map<Account>(account);
 
-                var accNumber=AccountNumberGenerator.GenerarNumeroCuenta();
+        //        var accNumber=AccountNumberGenerator.GenerarNumeroCuenta();
 
-                var mappedAccount = new Account()
-                {
-                    Number = accNumber,
-                    CreationDate = DateTime.Now,
-                    Balance = 0,
-                    ClientId = _client.Id
-                };
+        //        var mappedAccount = new Account()
+        //        {
+        //            Number = accNumber,
+        //            CreationDate = DateTime.Now,
+        //            Balance = 0,
+        //            ClientId = _client.Id
+        //        };
                 
-                _accountRepository.Save(mappedAccount);
+        //        _accountRepository.Save(mappedAccount);
 
 
-                return StatusCode(201, "Creada");
+        //        return StatusCode(201, "Creada");
 
-            }
-            catch
-            {
-                throw new Exception("Error al crear cuenta");
-            }
-        }
+        //    }
+        //    catch
+        //    {
+        //        throw new Exception("Error al crear cuenta");
+        //    }
+        //}
 
-        [HttpGet("currents/Account")]
-        public IActionResult GetAccountsById()
-        {
-            try
-            {
-                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
-                var _client = _clientRepository.FindByEmail(email);
+        //[HttpGet("currents/Account")]
+        //public IActionResult GetAccountsById()
+        //{
+        //    try
+        //    {
+        //        string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+        //        var _client = _clientRepository.FindByEmail(email);
                 
-                return Ok(_accountRepository.GetAccountsByClient(_client.Id));
-            }
-            catch
-            {
-                throw new Exception("Error al traer cuentas por id");
-            }
-        }
+        //        return Ok(_accountRepository.GetAccountsByClient(_client.Id));
+        //    }
+        //    catch
+        //    {
+        //        throw new Exception("Error al traer cuentas por id");
+        //    }
+        //}
 
      
 
