@@ -46,7 +46,7 @@ namespace HomeBankingNetMvc.Services.Implementation
             }
             catch(Exception ex)
             {
-
+                throw new Exception("Error al crear cuenta" + ex.Message);
             }
         }
 
