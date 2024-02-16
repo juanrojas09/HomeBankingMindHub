@@ -3,6 +3,7 @@ using HomeBankingNetMvc.Repositories.Implementation;
 using HomeBankingNetMvc.Repositories.Interfaces;
 using HomeBankingNetMvc.Services.Implementation;
 using HomeBankingNetMvc.Services.Interfaces;
+using HomeBankingNetMvc.Utils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
@@ -40,7 +41,11 @@ builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IClientServices, ClientServices>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionServices, TransactionServices>();
-
+builder.Services.AddScoped<ILoanRepository, LoanRepository>();
+builder.Services.AddScoped<IClientLoanRepository, ClientLoanRepository>();
+builder.Services.AddScoped<IClientLoanServices, ClientLoanServices>();
+builder.Services.AddScoped<ILoanServices, LoanServices>();
+builder.Services.AddTransient<ValidateLoanData>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();

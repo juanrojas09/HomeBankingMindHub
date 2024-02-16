@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ivcwV9AfN1o9HIb3cPo4FpJ6cWONcXF7ImKON+YWN98=",
+  "Hash": "asvxYzBtc/qll7+VFwwZZOi7nqwiVZ62xwebJNj4dJc=",
   "Source": "HomeBankingNetMvc",
   "BasePath": "_content/HomeBankingNetMvc",
   "Mode": "Default",
@@ -357,6 +357,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\index.js"
+    },
+    {
+      "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\loan-application.js",
+      "SourceId": "HomeBankingNetMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\",
+      "BasePath": "_content/HomeBankingNetMvc",
+      "RelativePath": "js/loan-application.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\loan-application.js"
     },
     {
       "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\site.js",
@@ -1478,6 +1497,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\loan-application.html",
+      "SourceId": "HomeBankingNetMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\",
+      "BasePath": "_content/HomeBankingNetMvc",
+      "RelativePath": "loan-application.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\loan-application.html"
     },
     {
       "Identity": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\manager.html",

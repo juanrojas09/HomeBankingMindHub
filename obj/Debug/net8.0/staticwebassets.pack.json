@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\js\\index.js"
     },
     {
+      "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\loan-application.js",
+      "PackagePath": "staticwebassets\\js\\loan-application.js"
+    },
+    {
       "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -303,6 +307,10 @@
     {
       "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\loan-application.html",
+      "PackagePath": "staticwebassets\\loan-application.html"
     },
     {
       "Id": "C:\\Users\\Juan Pablo\\Desktop\\Accenture-Proyect\\HomeBankingMindHub\\HomeBankingNetMvc\\wwwroot\\manager.html",

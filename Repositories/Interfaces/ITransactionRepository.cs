@@ -6,5 +6,7 @@ namespace HomeBankingNetMvc.Repositories.Interfaces
     {
         void Save(Transactions transaction);
         Transactions FindByNumber(long id);
+
+        
     }
 }

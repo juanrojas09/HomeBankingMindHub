@@ -11,5 +11,7 @@ namespace HomeBankingNetMvc.Services.Interfaces
         public void Create(string email);
         public IEnumerable<Account> GetAccountsById(string email);
         public AccountDTO GetAccountByNumber(string number);
+
+        public void Save(Account account);
     }
 }

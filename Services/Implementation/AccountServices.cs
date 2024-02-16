@@ -104,6 +104,9 @@ namespace HomeBankingNetMvc.Services.Implementation
             }
         }
 
-   
+        public void Save(Account account)
+        {
+            _accountRepository.Save(account);
+        }
     }
 }

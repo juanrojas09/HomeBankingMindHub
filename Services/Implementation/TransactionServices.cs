@@ -95,5 +95,21 @@ namespace HomeBankingNetMvc.Services.Implementation
             //actualizamos la cuenta de destino
             _accountRepository.Save(toAccount);
         }
+
+        public void SaveLoanMovement(Transactions transaction)
+        {
+            try
+            {
+
+                _transactionRepository.Save(transaction);
+                    
+                
+               
+
+            }catch(Exception ex)
+            {
+
+            }
+        }
     }
 }
