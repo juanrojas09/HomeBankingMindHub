@@ -37,12 +37,13 @@ namespace HomeBankingNetMvc.Services.Implementation
                     throw new Exception("No se pueden crear mas de 3 tarjetas por tipo.");
                 }
 
-           
+
+                var colorReqParse = Enum.TryParse(cardData.Color, out CardColor color);
+                var typeReqPArse = Enum.TryParse(cardData.Type, out CardType type);
 
 
 
-
-                if (Enum.TryParse(cardData.Color, out CardColor color) && Enum.TryParse(cardData.Type, out CardType type) && cardQty.Any(x => x.Color == color && x.Type == type))
+                if (colorReqParse && typeReqPArse && cardQty.Any(x => x.Color == color && x.Type == type))
                 {
                     throw new Exception("No se pueden añadir 2 tarjetas del mismo tipo con el mismo color");
                 }
