@@ -8,12 +8,12 @@ namespace HomeBankingNetMvc.Utils
 {
     public class ValidateLoanData
     {
-        private   IClientServices _clientServices;
+        private  IClientServices _clientServices;
         private  IAccountServices _accountServices;
         private  ILoanServices _loanServices;
         private  IClientLoanServices _clientLoanServices;
         private  ITransactionServices _transactionServices;
-        private IMapper _mapper;
+        private  IMapper _mapper;
 
 
         public ValidateLoanData(IClientServices clientServices, IAccountServices accountServices, ILoanServices loanServices, IClientLoanServices clientLoanServices, ITransactionServices transactionServices, IMapper mapper)

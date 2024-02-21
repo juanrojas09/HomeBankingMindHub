@@ -28,10 +28,26 @@ namespace HomeBankingNetMvc.Services.Implementation
                 var _client = _clientRepository.FindByEmail(email);
                 var cardQty = _cardRepository.GetCardsByCLientId(_client.Id);
 
-                if (cardQty.Count() >= 3)
+                var debitCount = cardQty.Count(x => x.Type == CardType.DEBIT);
+                var creditCount = cardQty.Count(x => x.Type == CardType.CREDIT);
+
+                if ((cardData.Type == "DEBIT" && debitCount >= 3) ||
+                          (cardData.Type == "CREDIT" && creditCount >= 3))
                 {
-                    throw new Exception("Limite de tarjetas excedidos");
+                    throw new Exception("No se pueden crear mas de 3 tarjetas por tipo.");
                 }
+
+           
+
+
+
+
+                if (Enum.TryParse(cardData.Color, out CardColor color) && Enum.TryParse(cardData.Type, out CardType type) && cardQty.Any(x => x.Color == color && x.Type == type))
+                {
+                    throw new Exception("No se pueden añadir 2 tarjetas del mismo tipo con el mismo color");
+                }
+
+              
                 var card = _mapper.Map<Card>(cardData);
                 card.CardHolder = _client.FirstName + " " + _client.LastName;
                 card.Number = CardDataGenerator.GenerarNumeroTarjeta();
